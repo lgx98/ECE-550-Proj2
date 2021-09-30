@@ -19,9 +19,9 @@ regfile
 ```
 
 - [ ] regfile.v: top level entity, register file with 1 write port and 2 read ports.
-- [ ] dffe_WeRs.v: implements D-Flip-Flop with Write-Enable and asynchronous Reset.
+- [x] dffe_WeRs.v: implements D-Flip-Flop with Write-Enable and asynchronous Reset.
 - [ ] decoder.v: just a decoder.
-- [ ] tristateBuffer.v: a tri-state buffer that outputs high-impedance when Enable is 0.
+- [x] tristateBuffer.v: a tri-state buffer that outputs high-impedance when Enable is 0.
 
 ## 🐞 Bugs and Issues
 
