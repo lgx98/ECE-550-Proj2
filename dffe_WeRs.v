@@ -8,6 +8,13 @@ module dffe_WeRs #(parameter Width = 32)
                    input clk,                   // clock
                    input rst);                  // async reset
     initial begin
-        qout = {(Width){1'b0}};
+        qout <= {Width{1'b0}};
+    end
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            qout <= {Width{1'b0}};
+        end else if (we) begin
+            qout <= din;
+        end
     end
 endmodule
