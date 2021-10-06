@@ -1,4 +1,4 @@
-# ALU - ADD/SUB/CMP
+# Register File
 
 ## 👨‍💻 Group Members
 

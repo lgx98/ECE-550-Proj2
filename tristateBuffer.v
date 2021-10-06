@@ -8,8 +8,9 @@ module tristateBuffer #(parameter Width = 32)
     // The code above is considered behavioral verilog by TAs :(
     genvar i;
     generate
-        for (i = 0; i < Width; i = i + 1) begin: gen_tribuf
-            assign Dout[i] = en?Din[i]:1'bz;
+        for (i = 0; i < Width; i = i + 1) begin: gen_bufif1
+            //assign Dout[i] = en?Din[i]:1'bz;
+            bufif1 u_bufif1(Dout[i], Din[i], en);
         end
     endgenerate
 endmodule

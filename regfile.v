@@ -55,11 +55,11 @@ module regfile (clock,
     generate
         for (i = 0; i < 32; i = i + 1) begin: gen_readA
             assign data_readRegA=dec_readA[i]?reg_out[i]:32'hzzzzzzzz;
-            // tristateBuffer u_tristateBuffer(
-            //     .Din(reg_out[i]),
-            //     .Dout(data_readRegA),
-            //     .en(dec_readA[i])
-            // );
+            tristateBuffer u_tristateBuffer(
+                .Din(reg_out[i]),
+                .Dout(data_readRegA),
+                .en(dec_readA[i])
+            );
         end
     endgenerate
 
@@ -70,12 +70,12 @@ module regfile (clock,
     );
     generate
         for (i = 0; i < 32; i = i + 1) begin: gen_readB
-            assign data_readRegB=dec_readB[i]?reg_out[i]:32'hzzzzzzzz;
-            // tristateBuffer u_tristateBuffer(
-            //     .Din(reg_out[i]),
-            //     .Dout(data_readRegB),
-            //     .en(dec_readB[i])
-            // );
+            // assign data_readRegB=dec_readB[i]?reg_out[i]:32'hzzzzzzzz;
+            tristateBuffer u_tristateBuffer(
+                .Din(reg_out[i]),
+                .Dout(data_readRegB),
+                .en(dec_readB[i])
+            );
         end
     endgenerate
 endmodule
