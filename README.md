@@ -29,5 +29,13 @@ regfile
 
 ## 🐞 Bugs and Issues
 
-Nothing at the moment.
+High delay (about 21 ns).
+
+The waveform below is generated under 85℃ slow model.
+
+![image-20211006121717117](.\README.assets\image-20211006121717117.png)
+
+## ⚠️ Achtung!
+
+There are some "forbidden" operators like <<, >>, &, /, %, etc., in the code. This seems like behavior Verilog but actually not. They are only used to calculate genvars to determine the wiring and will not be translated to logic gates in the circuit.
 

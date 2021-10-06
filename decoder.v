@@ -22,8 +22,14 @@ module decoder #(parameter n = 5)
     generate
         for (i = 0; i < WIDTH; i = i + 1) begin: gen_and_input
             for (j = 0; j < n; j = j + 1) begin: gen_and_input_each_bit
-            // get the jth of j; if it is 1 assign sel, else assign selN.
-                assign and_inputs[i][j] = ((i>>j)&1)?sel[j]:selN[j];
+                // get the jth of j; if it is 1 assign sel, else assign selN.
+                // assign and_inputs[i][j] = ((i>>j)&1)?sel[j]:selN[j];
+                // make code look more "structural"
+                if ((i>>j)%2==1) begin
+                    assign and_inputs[i][j] = sel[j];
+                end else begin
+                    assign and_inputs[i][j] = selN[j];
+                end
             end
             // assign out[i] = &and_inputs[i];
             and_arr #(.Width(n))
