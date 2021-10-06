@@ -22,14 +22,14 @@ module regfile (clock,
     wire [31:0] reg_out [31:0];
 
     // write port
-    // decoder decoder_write(
-    //     .sel(ctrl_writeReg),
-    //     .out(dec_write)
-    // );
-    decoder_precoding decoder_write(
+    decoder decoder_write(
         .sel(ctrl_writeReg),
         .out(dec_write)
     );
+    // decoder_precoding decoder_write(
+    //     .sel(ctrl_writeReg),
+    //     .out(dec_write)
+    // );
     genvar i;
     generate
         for (i = 1; i < 32; i = i + 1) begin: gen_and
@@ -52,14 +52,14 @@ module regfile (clock,
     endgenerate
 
     // read port A
-    // decoder decoder_readA(
-    //     .sel(ctrl_readRegA),
-    //     .out(dec_readA)
-    // );
-    decoder_precoding decoder_readA(
+    decoder decoder_readA(
         .sel(ctrl_readRegA),
         .out(dec_readA)
     );
+    // decoder_precoding decoder_readA(
+    //     .sel(ctrl_readRegA),
+    //     .out(dec_readA)
+    // );
     generate
         for (i = 0; i < 32; i = i + 1) begin: gen_readA
             assign data_readRegA=dec_readA[i]?reg_out[i]:32'hzzzzzzzz;
@@ -72,14 +72,14 @@ module regfile (clock,
     endgenerate
 
     // read port B
-    // decoder decoder_readB(
-    //     .sel(ctrl_readRegB),
-    //     .out(dec_readB)
-    // );
-    decoder_precoding decoder_readB(
+    decoder decoder_readB(
         .sel(ctrl_readRegB),
         .out(dec_readB)
     );
+    // decoder_precoding decoder_readB(
+    //     .sel(ctrl_readRegB),
+    //     .out(dec_readB)
+    // );
     generate
         for (i = 0; i < 32; i = i + 1) begin: gen_readB
             // assign data_readRegB=dec_readB[i]?reg_out[i]:32'hzzzzzzzz;

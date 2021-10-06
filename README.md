@@ -16,7 +16,7 @@ regfile
 ├───dffe_WeRs
 ├───decoder
 │   └───and_arr
-└───decoder_precoding
+└───//decoder_precoding
     └───decoder
         └───and_arr
 ```
@@ -29,11 +29,13 @@ regfile
 
 ## 🐞 Bugs and Issues
 
-High delay (about 21 ns).
+High delay (85℃ slow model, ctrl_readRegB[2] to data_readRegB[16], falling to falling, 20.236 ns).
 
-The waveform below is generated under 85℃ slow model.
+The default testbench cannot detect this bug.
 
-![image-20211006121717117](./README.assets/image-20211006121717117.png)
+In order to make successful reads, the clock period should not be faster than 20.236ns plus hold time for the accepting register.
+
+It seems that the best way to implement the decoder is to use 5-input and gates and let the compiler generate the LUTs.
 
 ## ⚠️ Achtung!
 
