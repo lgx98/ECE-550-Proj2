@@ -33,7 +33,7 @@ High delay (about 21 ns).
 
 The waveform below is generated under 85℃ slow model.
 
-![image-20211006121717117](.\README.assets\image-20211006121717117.png)
+![image-20211006121717117](./README.assets/image-20211006121717117.png)
 
 ## ⚠️ Achtung!
 
